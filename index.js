@@ -1,8 +1,10 @@
 window.addEventListener('DOMContentLoaded',function(event){
     var form_register = document.querySelector('#form-register');
     form_register.addEventListener('submit',function(event){
+
         event.preventDefault();
-        var canSubmit =false;
+
+        var canSubmit =true;
         var input_name= document.querySelector('#input_name');
 
         if(input_name.value == ""){
@@ -18,14 +20,12 @@ window.addEventListener('DOMContentLoaded',function(event){
         }
 
         //
-        var input_cedula = document.querySelector('#input_cedula');
-
-        if(input_cedula.value.length<10 || input_cedula.value.length>10){
+        var input_cedula = document.querySelector('#input_cedula'); 
+           
+        if(isNaN(input_cedula.value,false)){                   
             document.querySelector('#cedula_container .input-error').innerHTML= 'No pertenece a una cedula';
-            canSubmit = false
-        }
-        
-        
+            canSubmit = false           
+        }        
         else {
             document.querySelector('#cedula_container .input-error').innerHTML ='';    
         }
@@ -68,21 +68,21 @@ window.addEventListener('DOMContentLoaded',function(event){
         }
 
         
-        var input_date = document.querySelector('#input_date');
+        // var input_date = document.querySelector('#input_date');
 
-        if(input_date.value==""){
-            document.querySelector('#date_container  .input-error').innerHTML='La fecha de pago es obligatorio';
-            canSubmit = false;
-        }else{
-            var currentDate= new Date();
-            currentDate.setTime(Date.parse(input_date.value));
-            if(new Date().getTime() > currentDate.getTime()){
-                document.querySelector('#date_container  .input-error' ).innerHTML ='La fecha de pago debe ser diferente';
-                canSubmit = false;
-            }else{
-                document.querySelector('#date_container .input-error').innerHTML='';
-            }
-        }
+        // if(input_date.value==""){
+        //     document.querySelector('#date_container  .input-error').innerHTML='La fecha de pago es obligatorio';
+        //     canSubmit = false;
+        // }else{
+        //     var currentDate= new Date();
+        //     currentDate.setTime(Date.parse(input_date.value));
+        //     if(new Date().getTime() > currentDate.getTime()){
+        //         document.querySelector('#date_container  .input-error' ).innerHTML ='La fecha de pago debe ser diferente';
+        //         canSubmit = false;
+        //     }else{
+        //         document.querySelector('#date_container .input-error').innerHTML='';
+        //     }
+        // }
 
         if(!canSubmit){
             event.preventDefault();

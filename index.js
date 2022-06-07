@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded',function(event){
-    var form_register = document.querySelector('#form-register');
+    var form_register = document.querySelector('#form_register');
     form_register.addEventListener('submit',function(event){
 
         event.preventDefault();
